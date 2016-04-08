@@ -1,0 +1,208 @@
+body {
+    background-image: url("/IMG/bluebg.jpg");
+}
+
+#container {
+    width: 50%;
+    margin: 0 auto;
+}
+h1 {
+    font-size: 3em;
+    color: #52879E;
+    font-family: 'Permanent Marker', cursive;
+}
+
+img {
+    border-radius: 50%;
+}
+
+#start {
+    outline: none;
+    font-size: 2em;
+    line-height: 10px;
+    color: whiteSmoke;
+    font-family: 'Permanent Marker', cursive;
+    background-color: black;
+    border-radius: 100%; 
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+
+#score {
+    margin-left: 200px;
+}
+
+#box {
+    height: 600px;
+    width: 600px;
+    border: 1px blue;
+    position: absolute;
+    border-radius: 100%;
+    background-color: rgba(77, 190, 203, 0);
+
+}
+
+.buttons {
+    border: 1px solid transparent;
+    position: relative;
+    height: 150px; 
+    width: 150px;
+    margin: 25px;
+    float: left;
+    display: inline-block;
+}
+
+#red {
+    background-color: #C20000;
+}
+
+#red:active {
+    background-color: #6E0000;
+}
+
+#yellow {
+    background-color: #FFFF1D;
+}
+
+#yellow:active {
+    background-color: #85850F;
+}
+
+#blue {
+    background-color: blue;
+    clear: both;
+}
+
+#blue:active {
+    background-color: DarkBlue;
+}
+
+#green {
+    background-color: lawngreen;
+}
+
+#green:active {
+    background-color: DarkGreen;
+}
+
+.ui-effects-wrapper {
+    display:inline-block;
+}
+
+.pacman {
+  width: 0px;
+  height: 0px;
+  border-right: 60px solid black;
+  border-top: 60px solid yellow;
+  border-left: 60px solid yellow;
+  border-bottom: 60px solid yellow;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+   -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+
+}
+
+.pacman:before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: 5px;
+    background: black;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+}
+
+
+@media screen and (max-width: 760px) {
+    body {
+        background-image: url("");
+        background-color: black;
+        width: 100%;
+        height: 100%;
+    }
+
+    #container {
+        width: 100%;
+        margin: 0;
+    }
+    h1 {
+        margin: 0px;
+    }
+    #box {
+        border-radius: 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    #title {
+        display: none;
+    }
+
+    #start {
+        border: 0;
+        background-color: #25291C;
+        border-radius: 0px;
+        width: 100%;
+        height: 100px;
+        float: left;
+    }
+
+    #score {
+        text-align: center;
+        margin: 0px;
+        background-color: black;
+        color: white;
+    }
+
+    .buttons {
+        box-sizing: border-box;
+        margin: 0px;
+        border-radius: 0px;
+        width: 50%;
+        height: 50%;
+        float: left;
+    }
+}
+
+
+
