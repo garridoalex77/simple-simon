@@ -26,30 +26,46 @@ $(function() {
         } else if (random > 75) {
             x = $green
         };
-
         boxArray.push(x[0])
         console.log(boxArray)
         return x
     };
                 
     $start.click(function() {
+        boxArray = []
         randomBox();
-        x.animate({
-            opacity: ".3"
-        }, 500).effect("shake").animate ({
-            opacity: "1"
-        }, 500);
+        if ($(window).width() > 739) {
+            x.animate({
+                opacity: ".3"
+            }, 500).effect("shake").animate ({
+                opacity: "1"
+            }, 500);
+        } else {
+             x.animate({
+                opacity: ".3"
+            }, 500).animate ({
+                opacity: "1"
+            }, 500);
+        }
     });
 
     function arrayLoop() {
         boxIndex = 0;
         var intervalId = setInterval(function() {
                 var $y = $(boxArray[i]);
-                $y.animate({
-                    opacity: ".3"
-                }, 200).effect("shake").animate ({
-                    opacity: "1"
-                }, 200);
+                if ($(window).width() > 739) {
+                    $y.animate({
+                        opacity: ".3"
+                    }, 200).effect("shake").animate ({
+                        opacity: "1"
+                    }, 200);
+                } else {
+                    $y.animate({
+                        opacity: ".3"
+                    }, 200).animate ({
+                        opacity: "1"
+                    }, 200);
+                }
             i++;
             if (boxArray.length == i) {
                 clearInterval(intervalId);
@@ -59,32 +75,38 @@ $(function() {
     
     $buttons.each(function() {
         $(this).click(function() {
-            //on first click after arrayLoop boxindex = 0
-            console.log(boxIndex)
-            if (this == boxArray[boxIndex]) {
-                boxIndex++;
+            if (boxArray[0] == undefined) {
+                $title.html("<img src='/IMG/simon-garfunkel.png'>")
+                setTimeout(function() {
+                        $title.html("Simon Game")
+                    }, 2000)
             } else {
-                i = 0;
-                boxIndex = 0;
-                audio.play();
-                $title.html("Sorry...")
-                $title.append("<img src='/IMG/simon-garfunkel.png'>");
-                setTimeout(function() {
-                    $title.html("Simon Game")
-                    $start.html("Start");
-                }, 2000)
-                $score.html("Score: ")
-                $buttons.addClass('pacman')
-                setTimeout(function() {
-                    $buttons.removeClass('pacman')
-                }, 4000)
-                
-            }
-            if (boxArray.length == boxIndex) {
-                $('#score').html("Score: " + boxIndex);
-                i = 0;
-                randomBox();
-                arrayLoop();
+                 if (this == boxArray[boxIndex]) {
+                    boxIndex++;
+                } else {
+                    boxArray = [];
+                    i = 0;
+                    boxIndex = 0;
+                    audio.play();
+                    if ($(window).width() > 739) {
+                        $buttons.addClass('pacman')
+                        setTimeout(function() {
+                            $buttons.removeClass('pacman')
+                        }, 1000)
+                    }
+                    $title.html("Sorry...");
+                    setTimeout(function() {
+                        $title.html("Simon Game")
+                    }, 1000)
+                    $score.html("Score: ")
+                    //bug on small screen
+                }
+                if (boxArray.length == boxIndex) {
+                    $('#score').html("Score: " + boxIndex);
+                    i = 0;
+                    randomBox();
+                    arrayLoop();
+                }
             }
         });
     });
